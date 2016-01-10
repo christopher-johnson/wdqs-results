@@ -56,12 +56,12 @@ var loader = function() {
 
 		var load = function() {
 			require('google').load("visualization", "1", {
-				packages: ["corechart", "charteditor"],
+				packages: ["corechart", "charteditor", "map"],
 				callback: function() {
 					mod.emit('done')
 				}
 			})
-		}
+		};
 		if (loadingMain) {
 			mod.once('initDone', load);
 			mod.once('initError', function() {
