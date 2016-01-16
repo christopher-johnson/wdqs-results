@@ -8,6 +8,7 @@
   "homepage": "https://query.wikidata.org",
   "scripts": {},
   "devDependencies": {
+    "bootstrap-sass": "^3.3.1",
     "brfs": "^1.2.0",
     "browserify": "^6.1.0",
     "browserify-shim": "^3.8.0",
@@ -88,6 +89,7 @@
         "jquery"
       ]
     },
+    "google": "global:google",
     "datatables.net-bs": {
       "depends": [
         "jquery"

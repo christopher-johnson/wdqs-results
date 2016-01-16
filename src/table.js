@@ -127,7 +127,7 @@ var root = module.exports = function(wdqsr) {
         table.find(".sortIcons").remove();
         for (var sorting in sortings) {
             var svgDiv = $("<div class='sortIcons'></div>");
-            Svg.svg.draw(svgDiv, imgs[sortings[sorting]]);
+            Svg.draw(svgDiv, imgs[sortings[sorting]]);
             table.find("th." + sorting).append(svgDiv);
         }
     };

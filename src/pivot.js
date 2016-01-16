@@ -140,7 +140,7 @@ var root = module.exports = function(wdqsr) {
 			 * post process
 			 */
 			//use 'move' handler for variables. This removes the 'filter' button though. Might want to re-enable this in the future
-			var icon = $(Svg.svg.getElement(imgs.move));
+			var icon = $(Svg.getElement(imgs.move));
 			$pivotWrapper.find('.pvtTriangle').replaceWith(icon);
 
 			//add headers to selector rows

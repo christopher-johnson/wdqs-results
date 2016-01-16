@@ -258,7 +258,7 @@ var WDQSR = function(parent, options, queryResults) {
                 return url;
             };
             var button = $("<button class='wdqsr_btn wdqsr_downloadIcon btn_icon'></button>")
-                .append(Svg.svg.getElement(require('./imgs.js').download))
+                .append(Svg.getElement(require('./imgs.js').download))
                 .click(function() {
                     var currentPlugin = wdqsr.plugins[wdqsr.options.output];
                     if (currentPlugin && currentPlugin.getDownloadInfo) {
@@ -276,7 +276,7 @@ var WDQSR = function(parent, options, queryResults) {
         };
         var drawFullscreenButton = function() {
             var button = $("<button class='wdqsr_btn btn_fullscreen btn_icon'></button>")
-                .append(Svg.svg.getElement(require('./imgs.js').fullscreen))
+                .append(Svg.getElement(require('./imgs.js').fullscreen))
                 .click(function() {
                     wdqsr.container.addClass('wdqsr_fullscreen');
                 });
@@ -284,7 +284,7 @@ var WDQSR = function(parent, options, queryResults) {
         };
         var drawSmallscreenButton = function() {
             var button = $("<button class='wdqsr_btn btn_smallscreen btn_icon'></button>")
-                .append(Svg.svg.getElement(require('./imgs.js').smallscreen))
+                .append(Svg.getElement(require('./imgs.js').smallscreen))
                 .click(function() {
                     wdqsr.container.removeClass('wdqsr_fullscreen');
                 });
@@ -474,4 +474,7 @@ try {
 } catch (e) {}
 try {
     module.exports.registerOutput('gchart', require("./gchart.js"))
+} catch (e) {}
+try {
+    module.exports.registerOutput('gmap', require("./gmap.js"))
 } catch (e) {}

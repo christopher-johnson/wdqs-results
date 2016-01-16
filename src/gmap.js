@@ -4,20 +4,20 @@ var $ = require('jquery'),
     utils = require('./utils.js'),
     yUtils = require('yasgui-utils');
 
-var root = module.exports = function(yasr) {
+var root = module.exports = function(wdqsr) {
     var plugin = {
         name: "Google Map",
         getPriority: 10
     };
     var options = $.extend(true, {}, root.defaults);
-    var id = yasr.container.closest('[id]').attr('id');
+    var id = wdqsr.container.closest('[id]').attr('id');
     var map = null;
 
     plugin.draw = function() {
-        yasr.resultsContainer.empty();
+        wdqsr.resultsContainer.empty();
         var wrapperId = id + '_gmapWrapper';
 
-        yasr.resultsContainer.append(
+        wdqsr.resultsContainer.append(
             $('<div>', {
                 id: wrapperId,
                 class: 'gmapWrapper'
@@ -32,7 +32,7 @@ var root = module.exports = function(yasr) {
                     mapTypeId: google.maps.MapTypeId.TERRAIN
                 };
                 var map = new google.maps.Map(mapCanvas, mapOptions);
-                var jsonResults = yasr.results.getAsJson();
+                var jsonResults = wdqsr.results.getAsJson();
                 var spq = require('./parsers/sparql-geojson.js');
                 var results = spq.sparqlToGeoJSON(jsonResults);
 
@@ -51,7 +51,7 @@ var root = module.exports = function(yasr) {
     };
 
     plugin.canHandleResults = function() {
-        return yasr.results && yasr.results.getVariables && yasr.results.getVariables() && yasr.results.getVariables().length > 0;
+        return wdqsr.results && wdqsr.results.getVariables && wdqsr.results.getVariables() && wdqsr.results.getVariables().length > 0;
     };
 
     return plugin;

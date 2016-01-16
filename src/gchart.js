@@ -4,8 +4,7 @@
  * 
  */
 var $ = require('jquery'),
-	utils = require('./utils.js'),
-	yUtils = require('yasgui-utils');
+	utils = require('./utils.js');
 
 var root = module.exports = function(wdqsr) {
 
@@ -149,7 +148,7 @@ var root = module.exports = function(wdqsr) {
 					var row = [];
 					jsonResults.head.vars.forEach(function(variable, columnId) {
 						row.push(utils.castGoogleType(binding[variable], usedPrefixes, dataTable.getColumnType(columnId)));
-					})
+					});
 					dataTable.addRow(row);
 				});
 
@@ -179,7 +178,7 @@ var root = module.exports = function(wdqsr) {
 				chartWrapper.setOption("height", options.height);
 				chartWrapper.draw();
 				google.visualization.events.addListener(chartWrapper, 'ready', wdqsr.updateHeader);
-			}
+			};
 
 			if (!require('google') || !require('google').visualization || !editor) {
 				require('./gChartLoader.js')

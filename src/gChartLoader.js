@@ -1,6 +1,5 @@
 var EventEmitter = require('events').EventEmitter,
 	$ = require('jquery');
-//cannot package google loader via browserify....
 var loadingMain = false;
 var loadingFailed = false;
 var loader = function() {
@@ -9,12 +8,7 @@ var loader = function() {
 	this.init = function() {
 		if (!loadingFailed && !require('google') && !loadingMain) { //not initiated yet, not currently loading, and has not failed the previous time
 			loadingMain = true;
-			/**
-			 * It is extremely difficult to catch script loader errors (see http://www.html5rocks.com/en/tutorials/speed/script-loading/)
-			 * Existing libraries either ignore several browsers (e.g. jquery 2.x), or use ugly hacks (timeouts or something)
-			 * So, we use our own custom ugly hack (yes, timeouts)
-			 */
-			loadScript('http://google.com/jsapi', function() {
+			loadScript('https://www.google.com/jsapi', function() {
 				loadingMain = false;
 				mod.emit('initDone');
 			});
@@ -38,7 +32,7 @@ var loader = function() {
 				} else {
 					//TODO: clear initFailed callbacks. they won't fire anymore anyway
 				}
-			}
+			};
 			checkAndWait();
 		} else {
 			if (require('google')) {
@@ -51,12 +45,13 @@ var loader = function() {
 			}
 
 		}
-	}
+	};
+
 	this.googleLoad = function() {
 
 		var load = function() {
 			require('google').load("visualization", "1", {
-				packages: ["corechart", "charteditor", "map"],
+				packages: ["corechart", "charteditor"],
 				callback: function() {
 					mod.emit('done')
 				}
@@ -80,11 +75,11 @@ var loader = function() {
 			});
 		}
 	};
-}
+};
 
 
 var loadScript = function(url, callback) {
-	var script = document.createElement("script")
+	var script = document.createElement("script");
 	script.type = "text/javascript";
 
 	if (script.readyState) { //IE
@@ -103,6 +98,6 @@ var loadScript = function(url, callback) {
 
 	script.src = url;
 	document.body.appendChild(script);
-}
+};
 loader.prototype = new EventEmitter;
 module.exports = new loader();

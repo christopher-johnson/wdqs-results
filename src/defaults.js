@@ -9,7 +9,7 @@ module.exports = {
 	 */
 	output: "table",
 	useGoogleCharts: true,
-	outputPlugins: ["table", "error", "boolean", "rawResponse", "pivot", "gchart"],
+	outputPlugins: ["table", "error", "boolean", "rawResponse", "pivot", "gchart", "gmap"],
 
 	/**
 	 * Draw the output selector widget
@@ -88,7 +88,7 @@ module.exports = {
 			maxSize: 100000 //char count
 		}
 
-	},
+	}
 
 
 };
