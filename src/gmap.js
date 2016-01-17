@@ -44,9 +44,11 @@ var root = module.exports = function(wdqsr) {
                 for (var i = 0; i < results.features.length; i++) {
                     var coords = results.features[i].geometry.coordinates;
                     var latLng = new google.maps.LatLng(coords[0], coords[1]);
+                    var label = results.features[i].properties.label.value;
                     var marker = new google.maps.Marker({
                         position: latLng,
-                        map: map
+                        map: map,
+                        title: label
                     });
                 }
             };
