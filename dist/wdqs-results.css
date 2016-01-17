@@ -1018,6 +1018,8 @@
     width: 100%;
     height: 800px;
     margin-top: 2px; }
+  .wdqsr .wdqsr_btnGroup.mapCtl {
+    float: right; }
 
 /**need to reset this: the modal-dialog class conflicts with bootstrap**/
 .modal-dialog.google-visualization-charteditor-dialog {

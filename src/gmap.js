@@ -27,8 +27,8 @@ var root = module.exports = function(wdqsr) {
                 var $panel =
                     $('<div>', {
                         id: 'panel',
-                        class: 'panel'
-                    }).appendTo(wdqsr.resultsContainer);
+                        class: 'wdqsr_btnGroup mapCtl'
+                    }).appendTo(wdqsr.header);
                 var $button1 =
                     $('<button>', {
                         class: 'wdqsr_btn'
