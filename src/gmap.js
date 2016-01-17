@@ -1,30 +1,35 @@
 'use strict';
 
 var $ = require('jquery'),
-    utils = require('./utils.js'),
-    yUtils = require('yasgui-utils');
+    utils = require('./utils.js');
 
 var root = module.exports = function(wdqsr) {
-    var plugin = {
-        name: "Google Map",
-        getPriority: 10
-    };
     var options = $.extend(true, {}, root.defaults);
     var id = wdqsr.container.closest('[id]').attr('id');
     var map = null;
 
-    plugin.draw = function() {
-        wdqsr.resultsContainer.empty();
-        var wrapperId = id + '_gmapWrapper';
+    var initMaps = function(callback) {
+        var google = require('google');
+    };
 
-        wdqsr.resultsContainer.append(
-            $('<div>', {
-                id: wrapperId,
-                class: 'gmapWrapper'
-            })
-        );
-        require('./gMapLoader.js')
-            .on('done', function() {
+    return {
+        name: "Google Map",
+        getPriority: 10,
+        options: options,
+        canHandleResults: function () {
+            return wdqsr.results && wdqsr.results.getVariables && wdqsr.results.getVariables() && wdqsr.results.getVariables().length > 0;
+        },
+        draw: function () {
+            var doDraw = function () {
+                wdqsr.resultsContainer.empty();
+                var wrapperId = id + '_gmapWrapper';
+
+                wdqsr.resultsContainer.append(
+                    $('<div>', {
+                        id: wrapperId,
+                        class: 'gmapWrapper'
+                    })
+                );
                 var mapCanvas = document.getElementById(wrapperId);
                 var mapOptions = {
                     center: new google.maps.LatLng(52.516667, 13.383333),
@@ -38,23 +43,26 @@ var root = module.exports = function(wdqsr) {
 
                 for (var i = 0; i < results.features.length; i++) {
                     var coords = results.features[i].geometry.coordinates;
-                    var latLng = new google.maps.LatLng(coords[0],coords[1]);
+                    var latLng = new google.maps.LatLng(coords[0], coords[1]);
                     var marker = new google.maps.Marker({
                         position: latLng,
                         map: map
                     });
                 }
-            })
-            .on('error', function() {
-            });
-
-    };
-
-    plugin.canHandleResults = function() {
-        return wdqsr.results && wdqsr.results.getVariables && wdqsr.results.getVariables() && wdqsr.results.getVariables().length > 0;
-    };
-
-    return plugin;
+            };
+            if (!require('google')) {
+                require('./gMapLoader.js')
+                    .on('done', function () {
+                        initMaps();
+                        doDraw();
+                    })
+                    .on('error', function () {
+                    })
+            } else {
+                doDraw();
+            }
+        }
+    }
 };
 
 root.defaults = {

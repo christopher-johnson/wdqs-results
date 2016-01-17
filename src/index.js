@@ -53,6 +53,14 @@ var WDQSR = function(parent, options, queryResults) {
             .init();
     }
 
+    if (wdqsr.options.useGoogleMaps) {
+        require('./gMapLoader.js')
+            .once('initError', function() {
+                wdqsr.options.useGoogleMaps = false
+            })
+            .init();
+    }
+
     //first initialize plugins
     wdqsr.plugins = {};
     for (var pluginName in module.exports.plugins) {

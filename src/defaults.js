@@ -9,6 +9,7 @@ module.exports = {
 	 */
 	output: "table",
 	useGoogleCharts: true,
+	useGoogleMaps: true,
 	outputPlugins: ["table", "error", "boolean", "rawResponse", "pivot", "gchart", "gmap"],
 
 	/**
