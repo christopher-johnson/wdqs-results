@@ -23,12 +23,11 @@ var root = module.exports = function(wdqsr) {
             var doDraw = function () {
                 wdqsr.resultsContainer.empty();
                 var wrapperId = id + '_gmapWrapper';
-
-                var $panel =
+                 var $panel =
                     $('<div>', {
                         id: 'panel',
                         class: 'wdqsr_btnGroup mapCtl'
-                    }).appendTo(wdqsr.header);
+                    }).appendTo(wdqsr.resultsContainer);
                 var $button1 =
                     $('<button>', {
                         class: 'wdqsr_btn'
@@ -74,7 +73,7 @@ var root = module.exports = function(wdqsr) {
                 var mapCanvas = document.getElementById(wrapperId);
                 var mapOptions = {
                     center: new google.maps.LatLng(52.516667, 13.383333),
-                    zoom: 2,
+                    zoom: 5,
                     mapTypeId: google.maps.MapTypeId.TERRAIN
                 };
                 map = new google.maps.Map(mapCanvas, mapOptions);

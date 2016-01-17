@@ -928,6 +928,7 @@
   .wdqsr .table-striped > tbody > tr:nth-of-type(odd) {
     background-color: #f9f9f9 !important; }
   .wdqsr table.dataTable thead th {
+    background-color: rgba(0, 0, 0, 0.075) !important;
     background: none !important;
     border-right: 1px dotted gray;
     padding: 7px 0px; }
