@@ -9,7 +9,7 @@ var loader = function() {
     this.init = function () {
         if (!loadingFailed && !require('google') && !loadingMain) {
             loadingMain = true;
-            loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDqawy79f76MVm7I3eh2LEHXDNsLvFS2IY', function () {
+            loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDqawy79f76MVm7I3eh2LEHXDNsLvFS2IY&libraries=visualization', function () {
                 loadingMain = false;
                 mod.emit('done');
             });
@@ -40,7 +40,7 @@ var loader = function() {
         }
     };
     this.googleMapLoad = function() {
-        loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDqawy79f76MVm7I3eh2LEHXDNsLvFS2IY', function () {
+        loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDqawy79f76MVm7I3eh2LEHXDNsLvFS2IY&libraries=visualization', function () {
             mod.emit('done');
         });
     }
