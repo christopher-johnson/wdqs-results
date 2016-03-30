@@ -4,7 +4,7 @@ var $ = require("jquery"),
     Storage = require("wdqs-storage"),
     Svg = require("../lib/svg.js"),
     imgs = require('./imgs.js');
-require("datatables");
+require("datatables.net");
 require("../lib/colResizable-1.4.js");
 
 
