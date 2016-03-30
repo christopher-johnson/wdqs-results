@@ -1,7 +1,7 @@
 {
   "name": "wdqs-results",
   "description": "Wikidata Query Service Results",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "main": "src/index.js",
   "license": "MIT",
   "author": "",
@@ -62,13 +62,13 @@
     "url": "https://github.com/christopher-johnson/wdqs-results.git"
   },
   "dependencies": {
-    "codemirror": "^4.7.0",
+    "codemirror": "latest",
     "d3": "^3.4.13",
-    "datatables": "^1.10.7",
+    "datatables.net": "latest",
     "google": "latest",
     "jquery": ">=1.11.3",
     "jquery-ui": "^1.10.5",
-    "pivottable": "^1.2.2",
+    "pivottable": "latest",
     "wdqs-storage": "latest"
   },
   "browser": {
